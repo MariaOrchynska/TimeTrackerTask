@@ -22,7 +22,6 @@ public class TestRunner {
     private static ChromeDriver driver;
     JavascriptExecutor js = (JavascriptExecutor) driver;
 
-
     @BeforeAll
     public static void openBrowser() {
         System.setProperty("webdriver.chrome.driver", "//Applications/chromedriver");
@@ -34,7 +33,7 @@ public class TestRunner {
     }
 
     @Test
-    public void writeDataLineByLine() throws IOException {
+    public void generateTestData() throws IOException {
         String filePath = ("/Users/maria/IdeaProjects/TechTaskMariaOrchynska/src/main/java/employees.csv");
         File file = new File(filePath);
         CSVWriter writer = new CSVWriter(new FileWriter(file), ',',
@@ -100,10 +99,10 @@ public class TestRunner {
         delete.click();
     }
 
-//    @AfterAll
-//    public static void closeDriver() {
-//        driver.close();
-//    }
+    @AfterAll
+    public static void closeDriver() {
+        driver.quit();
+    }
 
 }
 
